@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulaire d'enregistrement</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <h1>Register form</h1>
+  <form id="registration-form">
+    <label for="name">Nom :</label>
+    <input type="text" id="name" name="name"><br>
+
+    <label for="email">Email :</label>
+    <input type="email" id="email" name="email"><br>
+
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" name="password"><br>
+    <small id="verifMsg"></small>
+
+    <input type="submit" value="S'inscrire">
+  </form>
+
+  <script>
+    const form = document.getElementById('registration-form');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // empêche le comportement par défaut du formulaire
+
+      const name = form.elements['name'].value;
+      const email = form.elements['email'].value;
+      const password = form.elements['password'].value;
+      small = form.elements['verifMsg']
+
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+      // Verification des chant
+      if (name ===''){
+        alert('Name are missing !');
+        return;
+      }
+      if (password ===''){
+        alert('Password are missing !');
+        return;
+      }
+      if (email ===''){
+        alert('Email are missing !');
+        return;
+      }
+
+      //Pwd verification 
+      const pswRegex = new RegExp('^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,}$')
+      if(pswRegex.test(password)){
+        
+      }else{
+        alert('The password may be strong !! ')
+        return;
+      }
+      
+      // vérifie si l'utilisateur existe déjà
+      const existingUser = users.find(function(user) {
+        return user.email === email;
+      });
+      
+      if (existingUser) {
+        alert('User already exist !');
+        return;
+      }
+      
+      // crée un nouvel utilisateur
+      const user = {
+        name: name,
+        email: email,
+        password: password,
+        role: email === 'ismael@gmail.com' ? 'admin' : 'user'
+      };
+
+      // ajoute le nouvel utilisateur au tableau des utilisateurs
+      users.push(user);
+
+      // enregistre le tableau des utilisateurs mis à jour dans localStorage
+      localStorage.setItem('users', JSON.stringify(users));
+
+      alert('Inscription réussie !');
+      form.reset();
+      small.value='hello'
+    });
+  </script>
+
+</body>
+</html>

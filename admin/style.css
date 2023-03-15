@@ -1,0 +1,68 @@
+body {
+	font-family: Arial, sans-serif;
+}
+
+h1 {
+	text-align: center;
+}
+
+h3 {
+    text-align: center;
+    border: solid;
+    border-color: darkorchid;
+    border-radius: 100%;
+}
+
+form {
+	margin: 20px auto;
+	display: flex;
+	flex-direction: column;
+	max-width: 500px;
+}
+
+label {
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+	margin-bottom: 20px;
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+	background-color: #3e8e41;
+}
+
+.blog-item {
+	margin: 20px auto;
+	max-width: 500px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.blog-item img {
+	max-width: 100%;
+}
+
+.blog-item h2 {
+	margin-top: 0;
+}
+
+.blog-item p {
+	margin: 10px 0;
+}

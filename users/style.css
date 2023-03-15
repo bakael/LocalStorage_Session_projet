@@ -1,0 +1,30 @@
+h1 {
+	text-align: center;
+}
+
+h3 {
+    text-align: center;
+    border: solid;
+    border-color: darkorange;
+    border-radius: 100%;
+}
+
+.blog-item {
+	margin: 20px auto;
+	max-width: 500px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.blog-item img {
+	max-width: 100%;
+}
+
+.blog-item h2 {
+	margin-top: 0;
+}
+
+.blog-item p {
+	margin: 10px 0;
+}
