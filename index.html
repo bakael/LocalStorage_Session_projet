@@ -15,7 +15,6 @@
 
     <label for="password">Mot de passe :</label>
     <input type="password" id="password" name="password"><br>
-    <small id="verifMsg"></small>
 
     <input type="submit" value="S'inscrire">
   </form>
@@ -29,7 +28,6 @@
       const name = form.elements['name'].value;
       const email = form.elements['email'].value;
       const password = form.elements['password'].value;
-      small = form.elements['verifMsg']
 
       const users = JSON.parse(localStorage.getItem('users') || '[]');
 
@@ -48,13 +46,13 @@
       }
 
       //Pwd verification 
-      const pswRegex = new RegExp('^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,}$')
-      if(pswRegex.test(password)){
+      // const pswRegex = new RegExp('^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{6,}$')
+      // if(pswRegex.test(password)){
         
-      }else{
-        alert('The password may be strong !! ')
-        return;
-      }
+      // }else{
+      //   alert('The password may be strong !! ')
+      //   return;
+      // }
       
       // vérifie si l'utilisateur existe déjà
       const existingUser = users.find(function(user) {
@@ -82,7 +80,8 @@
 
       alert('Inscription réussie !');
       form.reset();
-      small.value='hello'
+      window.location.href= "./login.html"
+      
     });
   </script>
 

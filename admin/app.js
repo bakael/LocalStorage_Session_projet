@@ -3,6 +3,9 @@ const blogList = document.querySelector('#blog-list');
 
 let blogs = [];
 
+// login verification
+loginVerif()
+
 // function to render blogs to the DOM
 function renderBlogs() {
 	// clear the blog list
@@ -125,3 +128,22 @@ blogForm.addEventListener('submit', (event) => {
 	// reset the form
 	blogForm.reset();
 });
+
+// check if there are any log in local storage
+function loginVerif(){
+	// get the log array from local storage and parse it
+	let logs = JSON.parse(localStorage.getItem('logs'));
+
+	if (logs.length > 0) {
+				
+		if(logs[0].role === 'admin' ){
+			console.log("User "+ logs[0].name +" is logged");
+		}else{
+		alert('You don’t have admin access')
+		window.location.href="../users/index.html"
+		}
+	}else{	
+		alert('You are not logged. Login first')
+		window.location.href="../login.html"
+	}
+}

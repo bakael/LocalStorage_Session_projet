@@ -2,6 +2,10 @@ const blogList = document.querySelector('#blog-list');
 
 let blogs = [];
 
+// login verification
+loginVerif()
+
+
 // function to render blogs to the DOM
 function renderBlogs() {
 	// clear the blog list
@@ -39,4 +43,17 @@ if (localStorage.getItem('blogs')) {
 
 	// render the blogs to the DOM
 	renderBlogs();
+}
+
+// check if there are any log in local storage
+function loginVerif(){
+	// get the log array from local storage and parse it
+	const logs= JSON.parse(localStorage.getItem('logs'))
+
+	if (logs.length > 0) {
+		console.log("User "+ logs[0].name +" is logged")
+	}else{	
+		alert('You are not logged. Login first')
+		window.location.href="../login.html"
+	}
 }

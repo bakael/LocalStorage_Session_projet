@@ -19,6 +19,7 @@
    </form>
    
    <script>
+
      const form = document.getElementById('login-form')
  
      form.addEventListener('submit', function(event){
@@ -37,8 +38,10 @@
          if (existingUser) {
            if  (existingUser.password === password){
               if (existingUser.role === "admin") {
-                return window.location.href = "admin/admin.html"
+                saveLog(existingUser.name,existingUser.email,existingUser.role)
+                return window.location.href = "admin/index.html"
               }else {
+                saveLog(existingUser.name,existingUser.email,existingUser.role)
                 return window.location.href = "users/index.html"
               }
              
@@ -52,6 +55,35 @@
  
  
      })
-   </script>
+
+    //save login information
+    function saveLog (name,email,role ){
+    // erase logs contends
+    logs=[]
+    
+    //create a new log object
+    const log = {
+        name:name,
+        email: email,
+        role:role
+
+    }
+
+    //add the new log to logs array
+    logs.push(log)
+
+    //save the logs array to the local storage
+    localStorage.setItem('logs', JSON.stringify(logs))
+
+    //display
+    renderLogs()
+    }
+    
+    function renderLogs(){
+    const logs= JSON.parse(localStorage.getItem('logs'))    
+    alert("User "+ logs[0].name +" is logged");
+    }
+
+    </script>
 </body>
 </html>
