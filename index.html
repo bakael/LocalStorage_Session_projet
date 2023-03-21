@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Formulaire d'enregistrement</title>
+  <title>Register Page</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="formStyle.css ">
 </head>
 <body>
   <h1>Register form</h1>
   <form id="registration-form">
     <label for="name">Nom :</label>
-    <input type="text" id="name" name="name"><br>
+    <input type="text" id="name" name="name" placeholder="Name : "><br>
 
     <label for="email">Email :</label>
-    <input type="email" id="email" name="email"><br>
+    <input type="email" id="email" name="email" placeholder="Email : "><br>
 
     <label for="password">Mot de passe :</label>
-    <input type="password" id="password" name="password"><br>
+    <input type="password" id="password" name="password" placeholder="Password : "><br>
 
     <input type="submit" value="S'inscrire">
   </form>
 
+  <div id="alert" class="alert">
+    <span class="closebtn" onclick="closeAlert()">&times;</span> 
+    <strong>Alerte!</strong> <p id="alerteMassage"></p>
+  </div>
+
+  Already have a acount <a href="login.html">click her</a>  
+
   <script>
     const form = document.getElementById('registration-form');
+    
+    function openAlert(msg) {
+      document.getElementById("alerteMassage").innerHTML = msg
+      document.getElementById("alert").style.display = "block";
+    }
+    function closeAlert() {
+    document.getElementById("alert").style.display = "none";
+    }
+
+
 
     form.addEventListener('submit', function(event) {
       event.preventDefault(); // empêche le comportement par défaut du formulaire
@@ -33,26 +51,27 @@
 
       // Verification des chant
       if (name ===''){
-        alert('Name are missing !');
+        openAlert("Name are missing !")
+        
         return;
       }
       if (password ===''){
-        alert('Password are missing !');
+        openAlert('Password are missing !');
         return;
       }
       if (email ===''){
-        alert('Email are missing !');
+        openAlert('Email are missing !');
         return;
       }
 
-      //Pwd verification 
-      // const pswRegex = new RegExp('^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{6,}$')
-      // if(pswRegex.test(password)){
+      // Pwd verification 
+      const pswRegex = new RegExp('^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{6,}$')
+      if(pswRegex.test(password)){
         
-      // }else{
-      //   alert('The password may be strong !! ')
-      //   return;
-      // }
+      }else{
+        openAlert('The password may be strong !! ')
+        return;
+      }
       
       // vérifie si l'utilisateur existe déjà
       const existingUser = users.find(function(user) {
@@ -60,7 +79,7 @@
       });
       
       if (existingUser) {
-        alert('User already exist !');
+        openAlert('User already exist !');
         return;
       }
       

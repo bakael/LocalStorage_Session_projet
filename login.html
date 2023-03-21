@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <title>Login page</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="formStyle.css">
 </head>
 <body>
   <form id="login-form">
-    <h1>Login page</h1>
+    <h1>Login Form</h1>
  
      <label for="email">Email :</label>
      <input type="email" id="email" name="email"><br>
@@ -17,10 +18,26 @@
  
      <input type="submit" value="Login">
    </form>
+
+   <div id="alert" class="alert">
+    <span class="closebtn" onclick="closeAlert()">&times;</span> 
+      <strong>Alerte!</strong> 
+      <p id="alerteMassage"></p>
+    </div>
    
+   Don’t have a acount <a href="index.html">click her</a>  
+
    <script>
 
      const form = document.getElementById('login-form')
+
+     function openAlert(msg) {
+      document.getElementById("alerteMassage").innerHTML = msg
+      document.getElementById("alert").style.display = "block";
+     }
+     function closeAlert() {
+      document.getElementById("alert").style.display = "none";
+     }
  
      form.addEventListener('submit', function(event){
          event.preventDefault()
@@ -46,11 +63,11 @@
               }
              
             } else{
-             alert('Invalid credentials input !');
+             openAlert('Invalid credentials input !');
              return;
             }
          }else {
-             alert('User don’t exist !');
+             openAlert('User don’t exist !');
          }
  
  
