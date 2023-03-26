@@ -1,10 +1,22 @@
 const blogForm = document.querySelector('#blog-form');
 const blogList = document.querySelector('#blog-list');
-
+const btnLogout= document.querySelector('#logOut')
 let blogs = [];
 
 // login verification
 loginVerif()
+
+//logout listeners
+btnLogout.addEventListener('click',()=>{
+	logs=[]
+
+    //save the logs array to the local storage
+    localStorage.setItem('logs', JSON.stringify(logs))
+
+	alert('You are logout')
+
+	window.location.href='../login.html'
+})
 
 // function to render blogs to the DOM
 function renderBlogs() {

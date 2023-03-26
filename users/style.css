@@ -28,3 +28,16 @@ h3 {
 .blog-item p {
 	margin: 10px 0;
 }
+
+button#logOut {
+	/* margin-top: 10px; */
+	margin-left:95% ;
+	background-color: tomato;
+	color: white;
+	cursor: pointer;
+}
+
+body {
+	/* background-image: linear-gradient(to bottom, #ff0000 0%, #ff8000 20%, #ffff00 40%, #80ff00 60%, #00ff80 80%, #0080ff 90%, #8000ff 95%, #ff00ff 100%); */
+  }
+  

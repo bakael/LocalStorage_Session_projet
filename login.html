@@ -30,6 +30,23 @@
    <script>
 
      const form = document.getElementById('login-form')
+     
+    // Auto reconnect
+     if(localStorage.getItem('logs')){
+
+      if(localStorage.getItem('logs').length>3) {
+        const loggedUser= JSON.parse(localStorage.getItem('logs') || '[]')
+
+        alert("Welcome back "+ loggedUser[0].name)
+        
+        if(loggedUser[0].role==='admin') {
+          window.location.href = "admin/index.html"
+        }else {
+          window.location.href = "users/index.html"
+        }
+      
+      }
+     }
 
      function openAlert(msg) {
       document.getElementById("alerteMassage").innerHTML = msg

@@ -65,7 +65,7 @@
       }
 
       // Pwd verification 
-      const pswRegex = new RegExp('^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{6,}$')
+      const pswRegex = new RegExp("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$");
       if(pswRegex.test(password)){
         
       }else{
